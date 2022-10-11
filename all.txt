@@ -1,0 +1,376 @@
+Prac1
+
+Code:
+
+<html>
+<h1>Arithematic Operation</h1>
+<script>
+function add(){
+var a,b,c;
+a= Number(document.getElementById("first").value);
+b= Number(document.getElementById("second").value);
+c= a+b;
+document.getElementById("ans").value=c;
+}
+function sub(){
+var a,b,c;
+a= Number(document.getElementById("first").value);
+b= Number(document.getElementById("second").value);
+c= a-b;
+document.getElementById("ans").value=c;
+}
+function mul(){
+var a,b,c;
+a= Number(document.getElementById("first").value);
+b= Number(document.getElementById("second").value);
+c= a*b;
+document.getElementById("ans").value=c;
+}
+function div(){
+var a,b,c;
+a= Number(document.getElementById("first").value);
+b= Number(document.getElementById("second").value);
+c= a/b;
+document.getElementById("ans").value=c;
+}
+</script>
+<body>
+<p>Enter First no.</p><input id="first"></input>
+<p>Enter Second no.</p><input id="second"></input></br></br>
+<button onclick="add()">Addition</button>
+<button onclick="sub()">Subtraction</button>
+<button onclick="mul()">Multiplication</button>
+<button onclick="div()">Division</button>
+<p>Result</p><input id="ans">
+</body>
+</html>
+
+
+Prac3
+
+Code:
+
+1.	Javascript to develop a web page which calculmes se GCD of 2 numbers-
+
+<html>
+<head>
+<script type="text/javascript"> function gcd(){
+var x,y; x=parseInt(document.myform.n1.value); y=parseInt(document.myform.n2.value); while(x!=y){
+if(x>y) x=x-y; else y=y-x;
+}
+document.myform.result.value=x;
+}
+</script>
+</head>
+<body>
+<form name="myform">
+Number 1:<input type="text" name="n1" value=""> Number 2:<input type="text" name="n2" value="">
+<input type="button" value="GCD" name="btn" onClick="gcd()"> GCD is:<input type="text" name="result" value="">
+</form>
+</body>
+</html>
+
+java test script for testing the GCD webpage
+Code:
+
+package gcd;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver; 
+
+public class gcd {
+public static void main(String[] args) {
+System.setProperty("webdriver.chrome.driver", "C:\\software testing\\chromedriver.exe"); WebDriver driver=new ChromeDriver(); driver.get("file:///C:/software%20testing/gcd.html"); driver.findElement(By.name("n1")).sendKeys("20"); driver.findElement(By.name("n2")).sendKeys("15"); driver.findElement(By.name("btn")).click();
+String result=driver.findElement(By.name("result")).getAttribute("name=result");
+}
+}
+
+Prac4
+Write and test a program to login to a specific web page.
+
+Code:
+
+<html>
+<head>
+<style>
+{
+text-align: center;
+}
+
+</style>
+<title> </title>
+</head>
+<form name="login">
+<fieldset class="bg">
+<legend>Login Form: </legend>
+UserName: <input type="text" name="userid" size="20"/><br /><br /> Password: <input type="password" name="pswrd" size="20"/><br /><br />
+<input type="button" name="log" onclick="check(this.form)" value="Login"/>
+<input type="reset" value="Cancel" />
+</fieldset>
+</form>
+<script language="javascript"> function check(form)
+{
+
+if(form.userid.value == "Harsh" && form.pswrd.value == "harsh")
+{
+alert("Login successful");
+}
+else
+{
+alert("Error Password or Username")
+}
+}
+</script>
+</body>
+
+</html>
+
+Prac5
+1.	Write an HTML Program for Combo box.
+
+<html>
+<body>
+<select id="country">
+<option>India</option>
+<option>Africa</option>
+<option>America</option>
+<option>Italy</option>
+<option>Belgium</option>
+<option>Canada</option>
+<option>Fiji</option>
+</select>
+</body>
+</html>
+write the following java program.
+
+import java.util.List;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver; import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.Select; 
+
+public class ComboCheck1 {
+public static void main(String args[]){
+
+System.setProperty("webdriver.chrome.driver","C:\\Users\\admin\\OneDrive\\Documents\\S T\\c
+hromedriver.exe");
+WebDriver driver = new ChromeDriver(); driver.get("file:///C:/Users/admin/OneDrive/Documents/ST/combo.html"); Select selectDropdown = new Select(driver.findElement(By.id("country"))); List <WebElement> listoptiondropdown = selectDropdown.getOptions(); int dropdowncount = listoptiondropdown.size();
+System.out.println("Total no of item count in dropdownlist: "+dropdowncount);
+}
+}
+
+Prac6
+Write and test a program to count the number of checkboxes i.e (checked and unchecked)using WebDriver
+
+Html Code:
+
+<html>
+<head>
+<style>
+.cen{
+text-align: left;
+}
+
+.bg{
+background-color: aquamarine;
+}
+</style>
+</head>
+<body class ="cen">
+<form class="bg">
+
+UserName:<input type="text" name="n1"><br><br> Password:<input type="password" name="p1"><br><br>
+
+select your city:<br><br>
+<input type="checkbox" name="c1">Mumbai<br>
+<input type="checkbox" name="c2">Pune<br>
+<input type="checkbox" name="c3">Thane<br>
+<input type="Submit" value="Done" name="b1">
+</form>
+</body>
+</html>
+
+
+
+Java Code:
+
+package checkbox; 
+
+import java.util.List;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver; import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+ 
+
+
+public class Checkbox {
+
+public static void main(String[] args) {
+// TODO code application logic here 
+
+System.setProperty("webdriver.chrome.driver", "C:\\selenium\\chromedriver.exe"); WebDriver driver=new ChromeDriver(); driver.get("file:///C:/selenium/checkbox/checkbox.html"); driver.findElement(By.name("c1")).click(); driver.findElement(By.name("c2")).click();
+List<WebElement> chkbox=driver.findElements(By.xpath("//input[@type='checkbox']")); int checked=0;
+int unchecked=0;
+for(int i=0;i<chkbox.size();i++)
+{
+if(chkbox.get(i).isSelected())
+{
+checked++;
+
+}
+else unchecked++;
+}
+
+System.out.println("No of selected checkbox is="+checked); System.out.println("No of unselected checkbox is="+unchecked);
+}
+}
+
+
+Prac 7 total number of objects present / available on the page.
+import java.util.List;
+import org.openqa.selenium.By;
+
+import org.openqa.selenium.WebDriver; import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver; public class ST {
+public static void main(String[] args) {
+
+
+System .setProperty("webdriver.chrome.driver","C:\\Selenium\\chromedriver.exe"); WebDriver driver=new ChromeDriver();
+ 
+driver.get("https://www.redbus.in/");
+
+List<WebElement> mylist=driver.findElements(By.tagName("a")); System.out.println("Nuumber Of links :"+mylist.size());
+for(int i=0;i<mylist.size();i=i+1) System.out.println(mylist.get(i).getText());
+}
+
+}
+
+
+Prac9
+import jxl.*; import jxl.write.*; import java.io.*;
+import java.io.FileInputStream; import java.io.FileOutputStream; import jxl.Workbook.*;
+
+import jxl.write.WritableSheet;
+ 
+import jxl.write.Number; public class Studrecords {
+public static void main(String[] args) throws IOException, WriteException {
+String filename = "C:\\Users\\LAB PC - 42\\Documents\\ST\\student.xls"; WritableWorkbook workbook = Workbook.createWorkbook(new File(filename)); WritableSheet Sheet = workbook.createSheet("Sheet1", 0);
+Label name = new Label(0,0,"NAME"); Label name1 = new Label(0,1,"Aditi"); Label name2 = new Label(0,2,"Prerna"); Label name3 = new Label(0,3,"sweta"); Label name4 = new Label(0,4,"Sachin"); Label name5 = new Label(0,5,"Rahul"); Label name6 = new Label(0,6,"Rohan"); Label name7 = new Label(0,7,"Simran"); Label name8 = new Label(0,8,"Priti"); Label name9 = new Label(0,9,"Shlok"); Label name0 = new Label(0,10,"Deepak");
+
+Sheet.addCell(name);
+
+Sheet.addCell(name1);
+
+Sheet.addCell(name2);
+
+Sheet.addCell(name3);
+
+Sheet.addCell(name4);
+
+
+Sheet.addCell(name5);
+
+Sheet.addCell(name6);
+ 
+Sheet.addCell(name7); Sheet.addCell(name8); Sheet.addCell(name9); Sheet.addCell(name0);
+
+Label py = new Label(1,0,"PYTHON"); Sheet.addCell(py);
+for(int i=1;i<11;i++)
+
+{
+
+Number pi = new Number(1,i,((i*i)+9)); Sheet.addCell(pi);
+}
+
+Label java = new Label(2,0,"JAVA"); Sheet.addCell(java);
+for(int i=1;i<11;i++)
+
+{
+
+Number j = new Number(2,i,((i*i)+5)); Sheet.addCell(j);
+}
+
+Label linux = new Label(3,0,"LINUX"); Sheet.addCell(linux);
+for(int i=1;i<11;i++)
+
+{
+
+
+Number l = new Number(3,i,((i*i)+2)); Sheet.addCell(l);
+}
+ 
+
+
+Label html = new Label(4,0,"WEB DEVELOPMENT"); Sheet.addCell(html);
+for(int i=1;i<11;i++)
+
+{
+
+Number h = new Number(4,i,((i*i)+6)); Sheet.addCell(h);
+}
+
+Label ins = new Label(5,0,"INS"); Sheet.addCell(ins);
+for(int i=1;i<11;i++)
+
+{
+
+Number in = new Number(5,i,((i*i)+3)); Sheet.addCell(in);
+}
+
+workbook.write(); workbook.close();
+}
+
+}
+
+Prac10 to select the number of students who have scored more than 60 in any one subject ( or all subjects ) (using TestNG)
+code:
+package javaApplication22;
+import org.testng.annotations.Test; import java.io.FileInputStream; import java.io.FileOutputStream; import jxl.Sheet;
+
+import jxl.Workbook; import jxl.write.Label;
+import jxl.write.WritableSheet; import jxl.write.WritableWorkbook; import jxl.read.*;
+import jxl.write.*; import java.io.*; import jxl.Cell; import jxl.Sheet; import jxl.Workbook;
+import jxl.read.biff.BiffException;
+ 
+public class countstudsNGTest { @Test
+public void testImportexport1() throws Exception,BiffException
+
+{
+
+FileInputStream fi = new FileInputStream("C:\\Users\\LAB PC - 42\\Documents\\ST\\student.xls "); Workbook w = Workbook.getWorkbook(fi); Sheet s = w.getSheet(0);
+String a[][] = new String[s.getRows()][s.getColumns()];
+
+FileOutputStream fo = new FileOutputStream("C:\\Users\\LAB PC - 42\\Documents\\ST\\Book4.xls ");
+WritableWorkbook wwb = Workbook.createWorkbook(fo); WritableSheet ws = wwb.createSheet("result", 0);
+int c=0;
+
+for (int i = 0; i < s.getRows(); i++) {
+
+
+for (int j = 0; j < s.getColumns(); j++) {
+if(i >= 1) {
+
+String b= new String(); b=s.getCell(3,i).getConten ts(); int x= Integer.parseInt(b);
+if( x < 60)
+
+{ c++;
+break;
+
+}
+
+}
+ 
+a[i][j] = s.getCell(j, i).getContents(); Label l2 = new Label(j, i-c, a[i][j]); ws.addCell(l2);
+}
+
+}
+
+wwb.write();
+
+wwb.close();
+
+}
+
+}
+
+
